@@ -5,13 +5,9 @@
 
 void inicializar_fuente(struct ListaLineasFuente *fuente);
 
-int cargar_fuente(const char *ruta,
-                  struct ListaLineasFuente *fuente,
-                  struct ErrorEnsamblador *error);
+int cargar_fuente(const char *ruta, struct ListaLineasFuente *fuente, struct ErrorEnsamblador *error);
 
-int escribir_imagen_binaria(const char *ruta,
-                            const struct ImagenBinaria *imagen,
-                            struct ErrorEnsamblador *error);
+int escribir_imagen_binaria(const char *ruta, const struct ImagenBinaria *imagen, struct ErrorEnsamblador *error);
 
 void liberar_fuente(struct ListaLineasFuente *fuente);
 
