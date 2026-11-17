@@ -4,26 +4,21 @@
 #include <stdlib.h>
 #include <string.h>
 
-static void registrar_error(struct ErrorEnsamblador *error,
-                            enum CodigoError codigo,
-                            size_t linea,
-                            const char *mensaje) {
+static void registrar_error(struct ErrorEnsamblador *error, enum CodigoError codigo, size_t linea,const char *mensaje){
     if (!error) return;
     error->codigo = codigo;
     error->numero_linea = linea;
     snprintf(error->mensaje, MAX_MENSAJE_ERROR, "%s", mensaje);
 }
 
-void inicializar_fuente(struct ListaLineasFuente *fuente) {
+void inicializar_fuente(struct ListaLineasFuente *fuente){
     if (!fuente) return;
     fuente->lineas = NULL;
     fuente->cantidad = 0;
     fuente->capacidad = 0;
 }
 
-static int agregar_linea(struct ListaLineasFuente *fuente,
-                         const char *texto,
-                         size_t numero_linea) {
+static int agregar_linea(struct ListaLineasFuente *fuente, const char *texto, size_t numero_linea) {
     if (fuente->cantidad == fuente->capacidad) {
         size_t nueva_cap = (fuente->capacidad == 0) ? 16 : fuente->capacidad * 2;
         struct LineaFuente *nuevo_arr = realloc(
@@ -48,9 +43,7 @@ static int agregar_linea(struct ListaLineasFuente *fuente,
     return 0;
 }
 
-int cargar_fuente(const char *ruta,
-                  struct ListaLineasFuente *fuente,
-                  struct ErrorEnsamblador *error) {
+int cargar_fuente(const char *ruta, struct ListaLineasFuente *fuente, struct ErrorEnsamblador *error){
     if (!ruta || !fuente) {
         registrar_error(error, ERROR_ARGUMENTOS, 0, "Ruta o estructura fuente nula.");
         return -1;
@@ -125,10 +118,7 @@ int cargar_fuente(const char *ruta,
     return 0;
 }
 
-/* Pendiente para la etapa de generacion de codigo binario */
-int escribir_imagen_binaria(const char *ruta,
-                            const struct ImagenBinaria *imagen,
-                            struct ErrorEnsamblador *error) {
+int escribir_imagen_binaria(const char *ruta, const struct ImagenBinaria *imagen, struct ErrorEnsamblador *error){
     (void)ruta;
     (void)imagen;
     registrar_error(error, ERROR_NINGUNO, 0, "Escritura binaria pendiente para etapa posterior.");
