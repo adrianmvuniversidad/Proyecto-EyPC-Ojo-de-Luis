@@ -21,8 +21,7 @@ void inicializar_fuente(struct ListaLineasFuente *fuente){
 static int agregar_linea(struct ListaLineasFuente *fuente, const char *texto, size_t numero_linea) {
     if (fuente->cantidad == fuente->capacidad) {
         size_t nueva_cap = (fuente->capacidad == 0) ? 16 : fuente->capacidad * 2;
-        struct LineaFuente *nuevo_arr = realloc(
-            fuente->lineas, nueva_cap * sizeof(struct LineaFuente));
+        struct LineaFuente *nuevo_arr = realloc(fuente->lineas, nueva_cap * sizeof(struct LineaFuente));
         if (!nuevo_arr) {
             return -1;
         }
