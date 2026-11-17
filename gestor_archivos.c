@@ -8,7 +8,7 @@ static void registrar_error(struct ErrorEnsamblador *error, enum CodigoError cod
     if (!error) return;
     error->codigo = codigo;
     error->numero_linea = linea;
-    snprintf(error->mensaje, MAX_MENSAJE_ERROR, "%s", mensaje);
+    printf(error->mensaje, "%s", mensaje);
 }
 
 void inicializar_fuente(struct ListaLineasFuente *fuente){
