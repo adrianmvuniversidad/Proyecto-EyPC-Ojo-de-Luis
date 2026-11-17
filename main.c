@@ -16,11 +16,6 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    printf("=== ARCHIVO FUENTE LEIDO (%zu lineas) ===\n", fuente.cantidad);
-    for (size_t i = 0; i < fuente.cantidad; i++) {
-        printf("%2zu | %s\n", fuente.lineas[i].numero_linea, fuente.lineas[i].texto);
-    }
-
     if (analizar_fuente_lexico(&fuente, &tokens, &error) != 0) {
         fprintf(stderr, "Error lexico [linea %zu]: %s\n", error.numero_linea, error.mensaje);
         liberar_fuente(&fuente);
